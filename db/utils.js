@@ -1,3 +1,5 @@
+const connection = require('./index.js');
+
 // sample users
 const users = ['Alec Hyde', 'Anson Ao', 'Benny Wu', 'Beth Johnson', 'Burke Green', 'Christian Noh', 'David Liman', 'Diego Espinoza', 'Dilsher Buttar', 'Enji Kim', 'Gaurav Gulati', 'Greg Pereira', 'Jae Ho Bae', 'Jean-Pierre Vertil', 'Jens Leerssen', 'Joel Spears', 'John Lopez', 'Jordan Bice', 'Joyce Cho',
 	'Justin Lin', 'Ken Crimmens', 'Kony Pham', 'Kristie Zheng', 'Michael Dimitras', 'Michael Chan', 'Nils Gudbranson', 'Warren Tseng', 'Xizhou Li', 'Zach Coursey', 'Zachary Hill', 'Adam Carter', 'Allan Zhao', 'Aman Vaid', 'Chloe Lin', 'Hanjoon Kim', 'Diane Huang', 'Dussadee Wang', 'Edward Baeg', 'Leanne Huynh',
@@ -104,7 +106,7 @@ const restaurants = [
 `Southern Cafe`,
 'Jong Ga House',
 'Sidebar Oaktown',
-'Mua'
+'Amano'
 ];
 
 // sample text for reviews
@@ -115,11 +117,11 @@ const text = `Whatever four dollar toast authentic, retro 8-bit intelligentsia s
 
 // generate query text to insert records into db table restaurants
 let fillRestaurants = function(restaurants) {
-	let query = '';
+	let query = 'INSERT INTO restaurants (name) VALUES ';
   restaurants.forEach(restaurant => {
-    query = query.concat(`INSERT INTO restaurants (name) VALUES ('${restaurant}'); \n`);
+    query = query.concat(`('${restaurant}')`);
   });
-  return query;
+  return query + ';';
 }
 
 // helper functions for generateReview - generater random contents of review
