@@ -8,8 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.11.3
-      
-    steps:
 
+    steps:
+      - checkout 
       - run: npm install
       - run: npm start
