@@ -119,8 +119,9 @@ const text = `Whatever four dollar toast authentic, retro 8-bit intelligentsia s
 let fillRestaurants = function(restaurants) {
 	let query = 'INSERT INTO restaurants (name) VALUES ';
   restaurants.forEach(restaurant => {
-    query = query.concat(`('${restaurant}')`);
+    query = query.concat(`('${restaurant}'),`);
   });
+	query = query.slice(0, query.length -1);
   return query + ';';
 }
 
