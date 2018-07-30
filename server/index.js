@@ -5,11 +5,12 @@ const path = require('path');
 
 const app = express();
 const PORT = 3011;
+const DIST_DIR = path.join(__dirname, '/../client/dist');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(`${__dirname  }/../client/dist`));
+app.use(express.static(DIST_DIR));
 
 // app.get('/api/lines', (req, res) => {
 //   db.getAllLines(function(err, lines) {
@@ -45,8 +46,6 @@ app.use(express.static(`${__dirname  }/../client/dist`));
 //     }
 //   }, req.body.name);
 // })
-
-// Write additional route handlers as needed below!
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
