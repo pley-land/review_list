@@ -1,51 +1,42 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-// const db = require('../database-mysql');
+const db = require('../db/index.js');
 
 const app = express();
 const PORT = 3011;
 const DIST_DIR = path.join(__dirname, '/../client/dist');
 
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(DIST_DIR));
 
-// app.get('/api/lines', (req, res) => {
-//   db.getAllLines(function(err, lines) {
+// get 20 most recent reviews upon page upload
+app.get('/:restaurantId/reviews', (req, res) => {
+  var id = req.params.restaurantId;
+  db.getRecentTwenty((err, reviews) => {
+    console.log('GET REVIEWS PRESSED');
+    if (err) {
+      console.log('SERVER ERROR: getting recent 20 reviews!')
+    } else {
+       console.log('reviews: ' + reviews);
+       res.json(reviews);
+    }
+  }, parseInt(id));
+});
+
+// app.post('/:restaurantId/reviews', (req, res) => {
+//   var id = req.params.restaurantId;
+//   db.getRecentTwenty((err, reviews) => {
 //     if (err) {
-//       console.log('server error in getting line!')
+//       console.log('SERVER ERROR: getting recent 20 reviews!')
 //     } else {
-//       // console.log('lines: ' + lines);
-//       res.json(lines);
-//   }
-//   })
+//        console.log('reviews: ' + reviews);
+//       res.json(reviews);
+//     }
+//   }, parseInt(id));
 // });
-
-// //sends stops along a service line
-// app.get('/api/lines/:lineId', (req, res) => {
-//   var lineId =req.params.lineId;
-//   db.getAllStops(function(err, stops) {
-//     if (err) {
-//       console.log('server error in getting stop!');
-//     } else {
-//       res.json(stops);
-//     }
-//   }, parseInt(lineId));
-// })
-
-// //updates station to be a favorite in the database
-// app.post('/api/lines/', (req, res) => {
-//   console.log('STATION NAME: ' + req.body.name, 'type: ', typeof req.body.name);
-//   db.favoriteStation(function (err) {
-//     if (err) {
-//       console.log('server error in toggling station!');
-//     } else {
-//       res.send();
-//     }
-//   }, req.body.name);
-// })
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

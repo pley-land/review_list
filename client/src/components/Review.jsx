@@ -1,42 +1,32 @@
 import React from 'react';
 import RightPanel from './RightPanel.jsx'
+import LeftPanel from './LeftPanel.jsx'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function Review() {
+function Review(props) {
   return (
     <div id="review-panels">
       <div id="left-panel">
-        <div id="user-info">
-          <div id="user-image">
-            <img className="img-border" src="https://s3-us-west-1.amazonaws.com/review-list/user.png" alt="placeholder" />
-          </div>
-          <div id="user-description">
-            <div className="user-name">
-              Enji K.
-            </div>
-            <div className="user-location">
-              San Francisco, CA
-            </div>
-            <div className="friends-count">
-              <img className="icon" src="https://vectr.com/enjik/welcome.svg?width=60&height=60&select=d6Uoaj0XB5" alt="friends-icon" height="18px" weight="18px" />
-              <strong>{Math.ceil(Math.random() * 600)}</strong> friends
-            </div>
-            <div className="reviews-count">
-              <img className="icon" src="https://vectr.com/enjik/welcome.svg?width=50&height=50&select=oSQ0j6b6mpage0" alt="star-icon" height="18px" weight="18px" />
-              <strong>{Math.ceil(Math.random() * 40)}</strong> reviews
-            </div>
-            <div className="photos-count">
-              <img className="icon" src="https://vectr.com/enjik/welcome.svg?width=50&height=50&select=b20RcNa1sk" alt="camera-icon" height="18px" weight="18px" />
-              <strong>{Math.floor(Math.random() * 20)}</strong> photos
-            </div>
-          </div>
-        </div>
-        <div id="hover-info">
-          Placeholder Hover Info
-        </div>
+        <LeftPanel info={props.info} />
       </div>
       <div id="right-panel">
         <div>
-          <RightPanel rating={3} />
+          <RightPanel info={props.info} />
+        </div>
+        <div id="feedback-question">Was this review ...?</div>
+        <div id="feedback-bar">
+          <button type="button" className="feedback-button">
+            <FontAwesomeIcon icon="stroopwafel" /> Useful <span className="button-count">{props.info.useful}</span>
+          </button>
+          <button type="button" className="feedback-button">
+            <FontAwesomeIcon icon="grin-squint" /> Funny <span className="button-count">{props.info.funny}</span>
+          </button>
+          <button type="button" className="feedback-button">
+            <FontAwesomeIcon icon="stroopwafel" /> Cool <span className="button-count">{props.info.cool}</span>
+          </button>
+          <div>
+            <button type="button" id="flag-button"><FontAwesomeIcon id="flag" icon="flag" /></button>
+          </div>
         </div>
       </div>
     </div>

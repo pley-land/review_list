@@ -136,7 +136,7 @@ const fillUsers = function(users) {
 
 // helper functions for generateReview - generater random contents of review
 const generateRating = function() {
-  return Math.floor(Math.random() * 6);
+  return Math.floor(Math.random() * 5) + 1;
 };
 
 const generateText = function(text) {

@@ -7,18 +7,62 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:8.11.3
-      
-      - image: circleci/mysql:8.0.11
+      - image: circleci/node:8.11
+      - image: circleci/mysql:5.7.22
         environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: pley
-          MYSQL_ROOT_HOST: 127.0.0.1
-          MYSQL_USER: root
+          - MYSQL_ALLOW_EMPTY_PASSWORD=true
+          - MYSQL_ROOT_HOST=%
 
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/photo-gallery
 
     steps:
       - checkout
-      - run: npm install
+
+      # Download and cache dependencies
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install npm wee
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run: sudo apt install -y mysql-client
+      - run: mysql -h 127.0.0.1 -u root < ./db/schema.sql
+      - run:
+          command: node ./server/server.js
+          background: true
+
       - run: npm test
+
+
+
+# version: 2
+# jobs:
+#   build:
+#     docker:
+#       # specify the version you desire here
+#       - image: circleci/node:8.11.3
+#
+#       - image: circleci/mysql:8.0.11
+#         environment:
+#           MYSQL_ALLOW_EMPTY_PASSWORD: yes
+#           MYSQL_ROOT_PASSWORD: ''
+#           MYSQL_DATABASE: pley
+#           MYSQL_ROOT_HOST: 127.0.0.1
+#           MYSQL_USER: root
+#
+#
+#     steps:
+#       - checkout
+#       - run: npm install
+#       - run: npm test
