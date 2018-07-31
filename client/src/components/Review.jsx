@@ -15,6 +15,7 @@ class Review extends React.Component {
     this.handleUsefulClick = this.handleUsefulClick.bind(this);
     this.handleFunnyClick = this.handleFunnyClick.bind(this);
     this.handleCoolClick = this.handleCoolClick.bind(this);
+    this.handleFlagClick = this.handleFlagClick.bind(this);
   }
 
   handleUsefulClick() {
@@ -36,6 +37,10 @@ class Review extends React.Component {
       .then(response => console.log(response))
       .catch((err) => { console.log(err); })
     this.setState({ cool: this.state.cool += 1 });
+  }
+
+  handleFlagClick() {
+    alert('You have reported this comment for misconduct');
   }
   render() {
     return (
@@ -59,7 +64,7 @@ class Review extends React.Component {
               <FontAwesomeIcon icon="stroopwafel" /> Cool <span className="button-count">{this.state.cool}</span>
             </button>
             <div>
-              <button type="button" id="flag-button"><FontAwesomeIcon id="flag" icon="flag" /></button>
+              <button type="button" id="flag-button"><FontAwesomeIcon id="flag" icon="flag" onClick={this.handleFlagClick}/></button>
             </div>
           </div>
         </div>
