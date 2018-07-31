@@ -1,4 +1,5 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function LeftPanel(props) {
   return (
@@ -29,7 +30,20 @@ function LeftPanel(props) {
         </div>
       </div>
       <div id="hover-info">
-        Placeholder Hover Info
+        <div id="hover-icons">
+          <img src="https://vectr.com/enjik/welcome.svg?width=18&height=18&select=gCgJVNLmc" alt="share" id="share" />
+          <img src="https://vectr.com/enjik/welcome.svg?width=18&height=18&select=dxGp24vVh" alt="embed" id="embed" />
+          <img src="https://vectr.com/enjik/welcome.svg?width=18&height=18&select=auzovl51h" alt="compliment" id="compliment" />
+          <img src="https://vectr.com/enjik/welcome.svg?width=18&height=18&select=h2qp8eeXrj" alt="send" id="send" />
+          <img src="https://vectr.com/enjik/welcome.svg?width=18&height=18&select=dytxXoiCo" alt="follow" id="follow" />
+        </div>
+        <div id="hover-labels">
+          <div className="share-review"> Share Review </div>
+          <div className="embed-review"> Embed Review </div>
+          <div className="compliment"> Compliment </div>
+          <div className="send-message"> Send Message </div>
+          <div className="follow-user"> Follow {props.info.user} </div>
+        </div>
       </div>
     </div>
   );

@@ -120,11 +120,17 @@ button {
 }
 .feedback-button {
   white-space: nowrap;
-  padding-top: 0.4em;
-  padding-bottom: 0.4em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
   padding-left: 0.4em;
   padding-right: 0.4em;
   margin-right: 7px;
+  vertical-align: middle;
+}
+.funny {
+  vertical-align: middle;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
 }
 #flag-button {
   margin-left: 65px;
@@ -135,6 +141,29 @@ button {
   padding-left: 0.4em;
   padding-right: 0.4em;
 }
-#flag{
+#flag {
   width: 0.8em;
+}
+#hover-info {
+  display: flex;
+  flex-direction: row;
+}
+#hover-icons {
+  display: flex;
+  flex-direction: column;
+  padding-right: 1em;
+}
+#hover-labels {
+  display: flex;
+  flex-direction: column;
+  color: #0073bb;
+  font-weight: bold;
+  width: 80%;
+}
+.share-review, .embed-review, .compliment, .send-message {
+  border-bottom: 0.3px solid #ededed;
+  padding-bottom: 0.5em;
+}
+#share, #embed, #compliment, #send, #follow{
+  padding-bottom: 0.35em;
 }
