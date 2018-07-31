@@ -1,5 +1,3 @@
-const connection = require('./index.js');
-
 // sample users
 const users = ['Alec H.', 'Anson A.', 'Benny W.', 'Beth J.', 'Burke G.', 'Christian N.', 'David L.', 'Diego E.', 'Dilsher B.', 'Enji K.', 'Gaurav G.', 'Greg P.', 'Jae B.', 'Jean-Pierre V.', 'Jens L.', 'Joel S.', 'John L.', 'Jordan B.', 'Joyce C.',
 	'Justin L.', 'Ken C.', 'Kony P.', 'Kristie Z.', 'Michael D.', 'Michael C.', 'Nils G.', 'Warren T.', 'Xizhou L.', 'Zach C.', 'Zachary H.', 'Adam C.', 'Allan Z.', 'Aman V.', 'Chloe L.', 'Hanjoon K.', 'Diane H.', 'Dussadee W.', 'Edward B.', 'Leanne H.',
@@ -138,7 +136,7 @@ const fillUsers = function(users) {
 
 // helper functions for generateReview - generater random contents of review
 const generateRating = function() {
-  return Math.floor(Math.random() * 6);
+  return Math.floor(Math.random() * 5) + 1;
 };
 
 const generateText = function(text) {
