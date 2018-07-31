@@ -4,9 +4,9 @@ import Review from './components/Review.jsx';
 import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStroopwafel, faFlag, faGrinSquint } from '@fortawesome/free-solid-svg-icons'
+import { faStroopwafel, faFlag, faGrinSquintTears } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faStroopwafel, faFlag, faGrinSquint);
+library.add(faStroopwafel, faFlag, faGrinSquintTears);
 
 class App extends React.Component {
   constructor(props) {

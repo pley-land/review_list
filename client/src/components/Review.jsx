@@ -19,7 +19,7 @@ function Review(props) {
             <FontAwesomeIcon icon="stroopwafel" /> Useful <span className="button-count">{props.info.useful}</span>
           </button>
           <button type="button" className="feedback-button">
-            <FontAwesomeIcon icon="grin-squint" /> Funny <span className="button-count">{props.info.funny}</span>
+            <FontAwesomeIcon icon="grin-squint-tears" /> Funny <span className="button-count">{props.info.funny}</span>
           </button>
           <button type="button" className="feedback-button">
             <FontAwesomeIcon icon="stroopwafel" /> Cool <span className="button-count">{props.info.cool}</span>

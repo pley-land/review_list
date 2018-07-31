@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.11
-      - image: circleci/mysql:5.7.22
+      - image: circleci/mysql:8.0.11
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
           - MYSQL_ROOT_HOST=%
@@ -18,7 +18,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/photo-gallery
+    working_directory: ~/review_list
 
     steps:
       - checkout
@@ -39,7 +39,7 @@ jobs:
       - run: sudo apt install -y mysql-client
       - run: mysql -h 127.0.0.1 -u root < ./db/schema.sql
       - run:
-          command: node ./server/server.js
+          command: node ./server/index.js
           background: true
 
       - run: npm test
