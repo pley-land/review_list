@@ -17,6 +17,7 @@ html, body {
   padding: 18px 0;
   padding-bottom: 17px;
   width: 629px;
+  min-height: 230px;
 }
 #header {
   color: #d32323;
@@ -150,21 +151,49 @@ button {
 #flag {
   width: 0.8em;
 }
+#review-panels:hover #hover-info{
+  display: flex; 
+  opacity: 1;
+}
 #hover-info {
   display: flex;
+  opacity: 0;
+  transition: 0.7s;
   flex-direction: row;
 }
 #hover-icons {
+  transition: opacity 0.5s linear;
   display: flex;
   flex-direction: column;
   padding-right: 1em;
 }
 #hover-labels {
+  transition: opacity 0.5s linear;
   display: flex;
   flex-direction: column;
   color: #0073bb;
   font-weight: bold;
   width: 80%;
+}
+.share-review:hover {
+  text-decoration: underline;
+  cursor: pointer;
+} 
+.embed-review:hover { 
+  text-decoration: underline;
+  cursor: pointer;
+}
+.compliment:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.send-message:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.follow-user:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .share-review, .embed-review, .compliment, .send-message {
   border-bottom: 0.3px solid #ededed;
