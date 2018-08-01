@@ -1,8 +1,8 @@
 import React from 'react';
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RightPanel from './RightPanel.jsx';
 import LeftPanel from './LeftPanel.jsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
 
 class Review extends React.Component {
   constructor(props) {
