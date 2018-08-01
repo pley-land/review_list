@@ -1,11 +1,11 @@
 -- Execute this file from the command line by typing:
 -- mysql -u <USER> -p < schema.sql
 
-DROP DATABASE IF EXISTS pley;
+DROP DATABASE IF EXISTS pleyreview;
 
-CREATE DATABASE pley;
+CREATE DATABASE pleyreview;
 
-USE pley;
+USE pleyreview;
 
 CREATE TABLE restaurants (
 	id int NOT NULL AUTO_INCREMENT,

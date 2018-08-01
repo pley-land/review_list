@@ -5,16 +5,21 @@ const db = require('../db/index.js');
 
 const app = express();
 const PORT = 3011;
-const DIST_DIR = path.join(__dirname, '/../client/dist');
+// const DIST_DIR = path.join(__dirname, '/../client/dist');
 
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(express.static(DIST_DIR));
+app.use((req, res, next) => {
+  res.set("Access-Control-Allow-Origin", "*");
+  next();
+});
+app.use(express.static(`${__dirname}/../client/dist`));
 
 // get 20 most recent reviews upon page upload
 app.get('/biz/:restaurantId/reviews', (req, res) => {
   var id = req.params.restaurantId;
+  console.log(id);
+  console.log('got here');
   db.getRecentTwenty((err, reviews) => {
     console.log('GET REVIEWS PRESSED');
     if (err) {

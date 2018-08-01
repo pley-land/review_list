@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Review from './components/Review.jsx';
 import axios from 'axios';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStroopwafel, faFlag, faLightbulb } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStroopwafel, faFlag, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faStroopwafel, faFlag, faLightbulb);
 
@@ -20,7 +19,7 @@ class App extends React.Component {
   componentDidMount() {
     const that = this;
     console.log(that.props.restaurantId);
-    axios.get(`/biz/${that.props.restaurantId}/reviews`)
+    axios.get(`http://localhost:3011/biz/${that.props.restaurantId}/reviews`)
       .then((response) => {
         console.log(response);
         const newReviews = response.data.map(review => (
@@ -51,12 +50,13 @@ class App extends React.Component {
   }
 
   render() {
+    const Name = this.props.restaurantId.replace(/%20/g, " ");
     return (
-      <div>
+      <div id="review-list">
         <div id="header">
           Recommended Reviews
           <span id="header-restaurant">
-            for {this.props.restaurantId}
+            for {Name}
           </span>
         </div>
         <div id="static-bar">
@@ -69,5 +69,5 @@ class App extends React.Component {
     );
   }
 }
-
-ReactDOM.render(<App restaurantId='Tacolicious' />, document.getElementById('app'));
+const restName = location.pathname.slice(5, location.pathname.length - 1);
+ReactDOM.render(<App restaurantId={restName} />, document.getElementById('reviewList'));

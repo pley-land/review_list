@@ -6,6 +6,12 @@ html, body {
   color: #333333;
   background: #FEFEFE;
 }
+
+#review-list {
+  margin-top: 70px;
+  margin-left: 20%;
+}
+
 #review-panels {
   border-bottom: 1px solid #e6e6e6;
   padding: 18px 0;
