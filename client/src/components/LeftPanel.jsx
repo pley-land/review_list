@@ -16,7 +16,7 @@ class LeftPanel extends React.Component {
       <div>
         <div id="user-info">
           <div id="user-image">
-            <img className="img-border" src="https://s3-us-west-1.amazonaws.com/review-list/user.png" alt="placeholder" />
+            <img className="img-border" src={this.props.info.user_image} alt="placeholder" />
           </div>
           <div id="user-description">
             <div className="user-name">

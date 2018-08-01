@@ -54,6 +54,8 @@ html, body {
 }
 .img-border {
   border-radius: 10%;
+  width: 60px;
+  height: 60px;
 }
 #user-description {
   display: flex;

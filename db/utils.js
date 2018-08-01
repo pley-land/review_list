@@ -125,12 +125,14 @@ const fillRestaurants = function(restaurants) {
 
 // generate mysql commands to insert records into db table users
 const fillUsers = function(users) {
-	let query = 'INSERT INTO users (username, profile_picture, location) VALUES ';
+  let query = 'INSERT INTO users (username, profile_picture, location) VALUES ';
   users.forEach(user => {
-		let location = cities[Math.floor(Math.random() * cities.length)] + ', CA';
-    query = query.concat(`('${user}', 'https://s3.us-east-2.amazonaws.com/pley-land-review-list/user_placeholder.jpg', '${location}'),`);
+    let location = cities[Math.floor(Math.random() * cities.length)] + ', CA';
+    let userSplit = user.split(' ');
+    let userUrl = `${userSplit[0]}+${userSplit[1]}`
+    query = query.concat(`('${user}', 'https://s3-us-west-1.amazonaws.com/review-list/Photos/${userUrl}.jpg', '${location}'),`);
   });
-	query = query.slice(0, query.length -1);
+  query = query.slice(0, query.length -1);
   return query + ';';
 };
 
@@ -234,12 +236,4 @@ let query = 'INSERT INTO reviews (rating, review_text, review_date, useful, funn
   return query + ';';
 };
 
-// // generate query text to insert records into db table review_pictures
-// let fillReviewPics = function() {
-// 	let query = '';
-// }
-//
-// var sqlReviews = function(reviews) {
-//
-// }
 module.exports.generateCool = generateCool;
