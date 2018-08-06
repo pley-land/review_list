@@ -13,7 +13,8 @@ app.use((req, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
   next();
 });
-app.use(express.static(`${__dirname}/../client/dist`));
+
+app.use('/biz/:restaurantId', express.static(`${__dirname}/../client/dist`));
 
 // get 20 most recent reviews upon page upload
 app.get('/biz/:restaurantId/reviews', (req, res) => {

@@ -19,7 +19,7 @@ class App extends React.Component {
   componentDidMount() {
     const that = this;
     console.log(that.props.restaurantId);
-    axios.get(`http://localhost:3011/biz/${that.props.restaurantId}/reviews`)
+    axios.get(`http://ec2-54-193-44-12.us-west-1.compute.amazonaws.com:3011/biz/${that.props.restaurantId}/reviews`)
       .then((response) => {
         console.log(response);
         const newReviews = response.data.map(review => (
@@ -70,4 +70,5 @@ class App extends React.Component {
   }
 }
 const restName = location.pathname.slice(5, location.pathname.length - 1);
+console.log(restName);
 ReactDOM.render(<App restaurantId={restName} />, document.getElementById('reviewList'));
